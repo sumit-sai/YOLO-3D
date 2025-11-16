@@ -127,8 +127,10 @@ def draw_skeleton_open3d(keypoints_3d, coco):
     return [line_set]+spheres
 
 
-# --- Path to your SVO2 file ---
-svo_path = "videos/HD1080_SN38536458_15-01-13.svo2"
+#---USER SETTINGS---
+svo_path = "videos/HD1080_SN38536458_15-01-13.svo2"# --- Path to your SVO2 file ---
+svo_pos= 150
+
 # --- Initialize ZED ---
 zed = sl.Camera()
 init_params = sl.InitParameters()
@@ -187,7 +189,7 @@ if zed.grab(runtime_params) == sl.ERROR_CODE.SUCCESS:
 # --- loading YOLO model ---
 model = YOLO("yolo11n-pose.pt")
 
-zed.set_svo_position(125)
+zed.set_svo_position(svo_pos)
 # --- Main loop ---
 while True:
     chamfer_dist = []
