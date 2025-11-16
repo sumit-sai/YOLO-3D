@@ -1,13 +1,43 @@
 # YOLO-3D
-3D Pedestrian Pose Extraction Using Stereo Vision and Evaluation
 
-To use the code 
-Use file pose_estimate_3d.py
+3D Pedestrian Pose Extraction Using Stereo Vision and YOLO Pose
+Estimation
 
-change the variable to svo_path to corresponding svo file path
+## Overview
 
-use keys A and D to navigate between the frames
-Use S key to the see the 3D skeleton
-Don't forget to close the open3d window before navigating to other frames
+This project loads ZED `.svo` / `.svo2` video files, performs YOLO 2D
+keypoint detection, projects those keypoints into 3D using ZED depth
+data, and visualizes the resulting 3D skeletons using Open3D. It also
+retrieves ZED's native 3D body keypoints for comparison. Chamfer and
+Hausdorff distances are computed to evaluate similarity between
+YOLO-based and ZED-based 3D poses.
 
-Use svo_pos variable to
+## How to Run
+
+1.  Download SVO videos from:\
+    **https://gogl.to/3q2w**
+
+2.  Set the SVO file path inside the script:
+
+    ``` python
+    svo_path = "path/to/your/file.svo2"
+    ```
+
+3.  Set the starting frame index:
+
+    ``` python
+    svo_pos = 150
+    ```
+
+4.  Run the script:
+
+        python pose_estimate_3d.py
+
+5.  Keyboard controls:
+
+    -   **D** -- Move forward 0.5s\
+    -   **A** -- Move backward 0.5s\
+    -   **S** -- Show 3D skeleton in Open3D\
+    -   **Q** -- Quit
+
+6.  Close the Open3D window before navigating to another frame.
