@@ -130,6 +130,7 @@ def draw_skeleton_open3d(keypoints_3d, coco):
 #---USER SETTINGS---
 svo_path = "videos/HD1080_SN38536458_15-01-13.svo2"# --- Path to your SVO2 file ---
 svo_pos= 150
+skip_frames = 15
 
 # --- Initialize ZED ---
 zed = sl.Camera()
@@ -173,8 +174,8 @@ if err != sl.ERROR_CODE.SUCCESS:
 body_runtime_param = sl.BodyTrackingRuntimeParameters()
 body_runtime_param.detection_confidence_threshold = 40
 
-# --- Fixed 30 FPS (0.5 s = 15 frames) ---
-half_sec_frames = 5
+
+
 
 print("Controls: 'D' → +0.5s | 'A' → -0.5s | 'Q' → quit")
 
@@ -202,9 +203,9 @@ while True:
     total_frames = zed.get_svo_number_of_frames()
 
     if key == ord('d'):  # forward
-        new_pos = min(current_frame + half_sec_frames, total_frames - 1)
+        new_pos = min(current_frame + skip_frames, total_frames - 1)
     elif key == ord('a'):  # backward
-        new_pos = max(current_frame - half_sec_frames, 0)
+        new_pos = max(current_frame - skip_frames, 0)
     elif key == ord('s'):  # backward
         if zed.grab() == sl.ERROR_CODE.SUCCESS:
             err = zed.retrieve_bodies(bodies, body_runtime_param)

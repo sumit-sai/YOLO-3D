@@ -17,7 +17,7 @@ YOLO-based and ZED-based 3D poses.
 1.  Download SVO videos from:\
     **https://gogl.to/3q2w**
 
-2.  Set the SVO file path inside the script:
+2.  Set the SVO file path inside the script under USER SETTINGS section of the code:
 
     ``` python
     svo_path = "path/to/your/file.svo2"
@@ -32,12 +32,17 @@ YOLO-based and ZED-based 3D poses.
 4.  Run the script:
 
         python pose_estimate_3d.py
+    An opencv window will open showing the first frame of the svo video you set in svo_path variable.
 
-5.  Keyboard controls:
+6.  Keyboard controls:
 
     -   **D** -- Move forward 0.5s\
     -   **A** -- Move backward 0.5s\
     -   **S** -- Show 3D skeleton in Open3D\
     -   **Q** -- Quit
 
-6.  Close the Open3D window before navigating to another frame.
+7.  Close the Open3D window before navigating to another frame.
+8.  After closing the window, you can see chamfer and hausdorff distances for each person in openCV window
+
+Additionally you can change skip_frames variable to change how many frames will be skipped when navigating the svo video.
+You can also use ZED's own Zed Explorer App (available with sdk) to view svo videos or scrub through entire video and get info about which frame to naviagte to.
