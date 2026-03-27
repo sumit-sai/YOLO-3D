@@ -1,3 +1,5 @@
+Project developed collaboratively by:
+Sumit Sai & Aditi Rathod
 # YOLO-3D
 
 3D Pedestrian Pose Extraction Using Stereo Vision and YOLO Pose
